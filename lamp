@@ -1,0 +1,44 @@
+#!/bin/bash
+
+if [[ $EIUD > 0 ]]; then
+    echo "You should run this command as root!"
+    exit
+fi
+
+if [ $1 == "start" ]; then
+    echo "Starting Apache HTTP Server service..."
+    sudo service apache2 start
+
+    echo ""
+    echo "Starting MySQL service..."
+    sudo service mysql start
+
+    echo ""
+    echo "All done!"
+else
+    if [ $1 == "stop" ]; then
+        echo "Stopping Apache HTTP Server service..."
+        sudo service apache2 stop
+
+        echo ""
+        echo "Stopping MySQL service..."
+        sudo service mysql stop
+
+        echo ""
+        echo "All done!"
+    else
+        if [ $1 == "restart" ]; then
+            echo "Restarting Apache HTTP Server service..."
+            sudo service apache2 restart
+
+            echo ""
+            echo "Restarting MySQL service..."
+            sudo service mysql restart
+
+            echo ""
+            echo "All done!"
+        else
+            echo "I don't know what '$1' means... Sorry for that!"
+        fi
+    fi
+fi
